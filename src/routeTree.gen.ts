@@ -10,33 +10,69 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CashImpactRouteImport } from './routes/cash-impact'
+import { Route as CompanyAnalysisRouteImport } from './routes/company-analysis'
+import { Route as InvestmentAssessmentRouteImport } from './routes/investment-assessment'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CashImpactRoute = CashImpactRouteImport.update({
+  id: '/cash-impact',
+  path: '/cash-impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyAnalysisRoute = CompanyAnalysisRouteImport.update({
+  id: '/company-analysis',
+  path: '/company-analysis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestmentAssessmentRoute = InvestmentAssessmentRouteImport.update({
+  id: '/investment-assessment',
+  path: '/investment-assessment',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cash-impact': typeof CashImpactRoute
+  '/company-analysis': typeof CompanyAnalysisRoute
+  '/investment-assessment': typeof InvestmentAssessmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cash-impact': typeof CashImpactRoute
+  '/company-analysis': typeof CompanyAnalysisRoute
+  '/investment-assessment': typeof InvestmentAssessmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cash-impact': typeof CashImpactRoute
+  '/company-analysis': typeof CompanyAnalysisRoute
+  '/investment-assessment': typeof InvestmentAssessmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/cash-impact' | '/company-analysis' | '/investment-assessment'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/cash-impact' | '/company-analysis' | '/investment-assessment'
+  id:
+    | '__root__'
+    | '/'
+    | '/cash-impact'
+    | '/company-analysis'
+    | '/investment-assessment'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CashImpactRoute: typeof CashImpactRoute
+  CompanyAnalysisRoute: typeof CompanyAnalysisRoute
+  InvestmentAssessmentRoute: typeof InvestmentAssessmentRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +84,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cash-impact': {
+      id: '/cash-impact'
+      path: '/cash-impact'
+      fullPath: '/cash-impact'
+      preLoaderRoute: typeof CashImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/company-analysis': {
+      id: '/company-analysis'
+      path: '/company-analysis'
+      fullPath: '/company-analysis'
+      preLoaderRoute: typeof CompanyAnalysisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investment-assessment': {
+      id: '/investment-assessment'
+      path: '/investment-assessment'
+      fullPath: '/investment-assessment'
+      preLoaderRoute: typeof InvestmentAssessmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CashImpactRoute: CashImpactRoute,
+  CompanyAnalysisRoute: CompanyAnalysisRoute,
+  InvestmentAssessmentRoute: InvestmentAssessmentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
