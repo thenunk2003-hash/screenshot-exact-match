@@ -28,3 +28,12 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## CashTrap AI architecture
+
+- Financial calculations live in `src/lib/finance/` as pure functions (metrics, risk, alerts, cash impact, parsing); UI never computes ratios itself — keeps logic testable and swappable for a backend.
+- `analyzeFinancials()` in `src/lib/finance/analyze.ts` mirrors a future `POST /analyze`; `investigateReport` server function mirrors a future `POST /investigate`. Keep their input/output shapes stable so a FastAPI backend can replace them.
+- Missing or non-meaningful inputs are `null`, never 0; risk scores normalise over available indicators (min 4) — prevents misleading scores.
+- The AI report receives only the pre-formatted engine fact sheet (`src/lib/report/facts.ts`) and must never compute figures; a deterministic, clearly labelled fallback report exists in `src/lib/report/deterministic.ts`.
+- App-wide company/analysis state is a React context (`src/lib/store/analysis-context.tsx`) persisted to localStorage after hydration; no backend database — prototype needs no login.
+- Engine rules are covered by `src/test/finance/engine.test.ts`; update it when thresholds or formulas change.

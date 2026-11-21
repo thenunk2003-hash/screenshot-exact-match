@@ -135,12 +135,12 @@ function RootComponent() {
         <SidebarProvider>
           <div className="flex min-h-screen w-full">
             <AppSidebar />
-            <SidebarInset className="bg-background">
+            <SidebarInset className="min-w-0 bg-background">
               <AppHeader />
-              <main className="mx-auto w-full max-w-[1400px] flex-1 px-4 py-8 md:px-8 print:max-w-none print:p-0">
+              <div className="mx-auto w-full max-w-[1400px] flex-1 px-4 py-8 md:px-8 print:max-w-none print:p-0">
                 {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
                 <Outlet />
-              </main>
+              </div>
             </SidebarInset>
           </div>
           <Toaster richColors position="top-right" />

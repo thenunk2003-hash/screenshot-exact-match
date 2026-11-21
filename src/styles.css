@@ -226,4 +226,6 @@
 @media print {
   @page { margin: 16mm; }
   body { background: var(--color-card); }
+  .peer[data-side],
+  [data-sonner-toaster] { display: none !important; }
 }

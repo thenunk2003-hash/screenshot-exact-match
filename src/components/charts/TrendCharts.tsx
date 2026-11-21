@@ -75,16 +75,16 @@ export function TrendCharts({ analysis }: { analysis: AnalysisResult }) {
 
       <ChartCard title="Receivables & Inventory" subtitle={`${c} millions, year-end balances`}>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 20, right: 16, left: -8, bottom: 0 }}>
+          <LineChart data={data} margin={{ top: 24, right: 28, left: 0, bottom: 0 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" vertical={false} />
             <XAxis dataKey="year" tick={axisTick} axisLine={false} tickLine={false} />
             <YAxis tick={axisTick} axisLine={false} tickLine={false} />
             <Tooltip contentStyle={tooltipStyle} formatter={fmt} />
             <Legend wrapperStyle={{ fontSize: 12 }} />
-            <Line type="monotone" dataKey="Receivables" stroke="var(--color-chart-3)" strokeWidth={2.5} dot={{ r: 4 }} connectNulls={false}>
+            <Line type="monotone" dataKey="Receivables" stroke="var(--color-chart-3)" strokeWidth={2.5} dot={{ r: 4 }} isAnimationActive={false} connectNulls={false}>
               <LabelList dataKey="Receivables" position="top" formatter={fmt} style={{ fill: "var(--color-foreground)", fontSize: 11 }} />
             </Line>
-            <Line type="monotone" dataKey="Inventory" stroke="var(--color-chart-4)" strokeWidth={2.5} dot={{ r: 4 }} connectNulls={false}>
+            <Line type="monotone" dataKey="Inventory" stroke="var(--color-chart-4)" strokeWidth={2.5} dot={{ r: 4 }} isAnimationActive={false} connectNulls={false}>
               <LabelList dataKey="Inventory" position="bottom" formatter={fmt} style={{ fill: "var(--color-foreground)", fontSize: 11 }} />
             </Line>
           </LineChart>
@@ -93,12 +93,12 @@ export function TrendCharts({ analysis }: { analysis: AnalysisResult }) {
 
       <ChartCard title="Operating Cash Flow" subtitle={`${c} millions`}>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 20, right: 16, left: -8, bottom: 0 }}>
+          <LineChart data={data} margin={{ top: 24, right: 28, left: 0, bottom: 0 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" vertical={false} />
             <XAxis dataKey="year" tick={axisTick} axisLine={false} tickLine={false} />
             <YAxis tick={axisTick} axisLine={false} tickLine={false} />
             <Tooltip contentStyle={tooltipStyle} formatter={fmt} />
-            <Line type="monotone" dataKey="Operating Cash Flow" stroke="var(--color-chart-2)" strokeWidth={2.5} dot={{ r: 4 }}>
+            <Line type="monotone" dataKey="Operating Cash Flow" stroke="var(--color-chart-2)" strokeWidth={2.5} dot={{ r: 4 }} isAnimationActive={false}>
               <LabelList dataKey="Operating Cash Flow" position="top" formatter={fmt} style={{ fill: "var(--color-foreground)", fontSize: 11 }} />
             </Line>
           </LineChart>

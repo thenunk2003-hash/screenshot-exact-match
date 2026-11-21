@@ -25,7 +25,7 @@ const DEFS: Def[] = [
   { key: "netDebtToEbitda", name: "Net Debt / EBITDA", formula: "Net debt ÷ EBITDA", format: fmtMultiple, deltaUnit: "x", higherIsWorse: true, explanation: "Years of EBITDA needed to repay net debt; a core leverage measure." },
 ];
 
-function Delta({ def, cur, prev }: { def: Def; cur: MetricValue; prev?: MetricValue }) {
+function Delta({ def, cur, prev }: { def: Def; cur: MetricValue; prev: MetricValue | undefined }) {
   if (!prev || !isNum(cur.value) || !isNum(prev.value)) return null;
   const raw = cur.value - prev.value;
   if (def.key === "netDebt") {

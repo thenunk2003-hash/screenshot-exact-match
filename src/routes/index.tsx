@@ -54,7 +54,7 @@ function Dashboard() {
       />
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-6">
-        <StatCard label="Company" icon={Building2} value={<span className="font-display text-base leading-snug">{a.companyName}</span>} sub={cur ? `Latest FY ${cur.year} · ${a.records.length} years` : undefined} className="xl:col-span-1" />
+        <StatCard label="Company" icon={Building2} value={<span className="block whitespace-normal font-display text-base leading-snug">{a.companyName}</span>} sub={cur ? `Latest FY ${cur.year} · ${a.records.length} years` : undefined} className="xl:col-span-1" />
         <StatCard label="Revenue" icon={TrendingUp} value={fmtMoney(cur?.revenue, c)} sub={revG !== null ? `${fmtSigned(revG, "%")} YoY` : undefined} tone={toneFor(revG)} />
         <StatCard label="EBITDA" icon={Banknote} value={fmtMoney(cur?.ebitda, c)} sub={ebG !== null ? `${fmtSigned(ebG, "%")} YoY` : undefined} tone={toneFor(ebG)} />
         <StatCard label="Operating Cash Flow" icon={Wallet} value={fmtMoney(cur?.operatingCashFlow, c)} sub={ocfG !== null ? `${fmtSigned(ocfG, "%")} YoY` : undefined} tone={toneFor(ocfG)} />

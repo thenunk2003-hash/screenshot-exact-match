@@ -21,7 +21,7 @@ export function StatCard({
         <span className="eyebrow">{label}</span>
         {Icon && <Icon className="size-4 text-muted-foreground" />}
       </div>
-      <div className="num text-[22px] font-semibold text-foreground leading-tight">{value}</div>
+      <div className="num whitespace-nowrap text-lg font-semibold text-foreground leading-tight 2xl:text-xl">{value}</div>
       {sub && <div className={cn("text-xs font-medium", toneCls)}>{sub}</div>}
       {footnote && <div className="text-[11px] text-muted-foreground">{footnote}</div>}
     </div>
